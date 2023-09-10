@@ -7,8 +7,8 @@ const HOST = "localhost";
 const PORT = "8080";
 
 app.get("/api",(req,res)=>{
-    const slackName = req.query.slack_name ;
-    const track = req.query.track;
+    const slackName = req.query.slack_name || "Eunice Gyau";
+    const track = req.query.track || "backend";
 
     const dayOfWeek = moment().tz("UTC").format("dddd");
     const currentUTCtime = moment().tz('UTC').format("YYYY-MM-DDTHH:mm:ss[Z]")
