@@ -6,9 +6,9 @@ const app = express();
 const HOST = "localhost";
 const PORT = "8080";
 
-app.get("/",(req,res)=>{
-    const slackName = req.query.slack_name||"Eunice Gyau";
-    const track = req.query.track || "Backend";
+app.get("/api",(req,res)=>{
+    const slackName = req.query.slack_name ;
+    const track = req.query.track;
 
     const dayOfWeek = moment().tz("UTC").format("dddd");
     const currentUTCtime = moment().tz('UTC').format("YYYY-MM-DDTHH:mm:ss[Z]")
@@ -25,10 +25,12 @@ app.get("/",(req,res)=>{
         "github_repo_url" : githubRepoURL,
         "status" : 200
     };
-
-    res.status(200).json(data)
+    
+    return res.status(200).json(data);
+    
+    
 })
 
 app.listen(PORT,()=>{
-    console.log(`Server has started on ${HOST}: ${PORT}`)
+    console.log(`Server is running on ${HOST}: ${PORT}`)
 })
